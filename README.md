@@ -13,7 +13,7 @@ The Azure function is in charge of:
 
 
 ## Create locally the Azure Function App
-Create the Azure Function App by following this [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp) and by applying following properties:
+Create the Azure Function App by following this [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp) and this guidance:
 
 ### Create a local project
 Take these properties:
@@ -69,7 +69,7 @@ Log sent by curl:
 ![Alt text](/images/2-Azure-Log-Analytics-run-query.png "Query on kong_CP_CL")
 
 ## Create and Deploy the Azure Function App
-See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp) and take these properties:
+See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp#sign-in-to-azure) and follow this guidance:
 
 ### Create the Function App in Azure
 - Select subscription (You won't see this prompt when you have -only one subscription visible under Resources)
@@ -78,13 +78,15 @@ See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-fi
 - Select a location: ```West Europe``` (for instance)
 
 ### Deploy the project to Azure
+See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp#deploy-the-project-to-azure)
+
 In Visual Studio Code, choose the Azure icon in the Activity bar, then in the Workspace area, select your project folder and select the Deploy... button
 
 ### Test the public Azure Function App
 The public URL of the Azure Function has this syntax:
 `https://<function_app_name>.azurewebsites.net/api/<function_name>?code=<function_key>`
 
-The function key is retrieved on Azure Portal
+The function key is retrieved on Azure Portal:
 1) Open the `konnect-audit-log-processing` Function App
 2) Click on `Functions` menu on the left
 3) Open the `konnect_audit_log_processing` function
