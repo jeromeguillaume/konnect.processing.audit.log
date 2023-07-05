@@ -114,7 +114,7 @@ See logs in the Log Analytics Workspace.
 3) Click on `Audit Logs Setup` menu on the left
 4) Configure the Control Plane location `US - North America` or `EU - Europe` with:
 -  Endpoint: `https://konnect-audit-log-processing.azurewebsites.net/api/konnect_audit_log_processing?code=<****funtion_key****>`
-- Log Format: json
+- Log Format: `json`
 - Enabled
 5) Click on `Save`
 6) Apply some load on Konnect: create Gateway Service, apply Plugin, create route, etc.
