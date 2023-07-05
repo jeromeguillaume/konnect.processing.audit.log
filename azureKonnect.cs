@@ -36,10 +36,10 @@ namespace kong.konnect
 		public async Task<string> receiveAndSendLogsToAzure (HttpRequestData req)
 		{
 			string requestBody = "";
-            var valueContentEnconding = "";
+			var valueContentEnconding = "";
 			//----------------------------------------------------------------------
 			// Decompress the traffic if needed by checking Content-Encoding header
-            //----------------------------------------------------------------------
+			//----------------------------------------------------------------------
 			try
             {
                 valueContentEnconding = req.Headers.GetValues("Content-Encoding").First();

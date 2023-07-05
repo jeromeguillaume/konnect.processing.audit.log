@@ -13,7 +13,7 @@ The Azure function is in charge of:
 
 
 ## Create the Azure Function App
-Create the Azure Function App by following this [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp)
+Create the Azure Function App by following this [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp) and by applying following properties
 
 ### Create a local project
 Take these properties:
