@@ -128,7 +128,7 @@ See Konnect [documentation](https://docs.konghq.com/konnect/org-management/audit
 
 ## Troublehoot the Azure Function App
 1) Open the `konnect-audit-log-processing` Function App
-2) Click on `Log Stream` menu on the left
+2) Click on `Log stream` menu on the left
 3) See the content log
 
 ![Alt text](/images/6-Azure-Log-Stream.png "Log Stream")
