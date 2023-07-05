@@ -126,7 +126,7 @@ See Konnect Audit Logs in Azure log analytics:
 
 See Konnect [documentation](https://docs.konghq.com/konnect/org-management/audit-logging/reference/#log-formats) to have the complete list of properties.
 
-## Troublsehoot Azure Function App
+## Troublehoot Azure Function App
 1) Open the `konnect-audit-log-processing` Function App
 2) Click on `Log Stream` menu on the left
 3) See the content log
