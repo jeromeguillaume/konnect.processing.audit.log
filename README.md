@@ -67,6 +67,13 @@ kong_CP_CL
 Log sent by curl:
 ![Alt text](/images/2-Azure-Log-Analytics-run-query.png "Query on kong_CP_CL")
 
+As explained by Microsoft, Azure Monitor appends suffix depending on the property data type:
+- `_s` for String
+- `_d` for Double
+- etc.
+
+[See Azure documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-collector-api?tabs=powershell#record-type-and-properties)
+
 ## Create and Deploy the public Azure Function App
 See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp#sign-in-to-azure) and follow this guidance:
 
