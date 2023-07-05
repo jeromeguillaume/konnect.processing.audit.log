@@ -12,7 +12,7 @@ The Azure function is in charge of:
 ![Alt text](/images/1-Azure-Log-Analytics-Workspace.png "Log Analytics Workspace")
 
 
-## Create locally the Azure Function App
+## Create the local Azure Function App
 Create the Azure Function App by following this [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp) and this guidance:
 
 ### Create a local project
