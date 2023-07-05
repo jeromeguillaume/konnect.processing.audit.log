@@ -3,8 +3,6 @@ This Azure function is in charge of:
 1) Collecting logs sent by Konnect Control Plane [Audit logs](https://docs.konghq.com/konnect/org-management/audit-logging/)
 2) Pushing log to Azure Log Analytics with the [Azure HTTP Data Collector REST API](https://learn.microsoft.com/en-us/rest/api/loganalytics/create-request)
 
-![Alt text](/images/7-Konnect-Audit-log.png "Konnect Audit Logs")
-
 ## Create the Azure Log Analytics Workspace
 1) Sign in to Azure Portal, [here](https://portal.azure.com/)
 2) Look for **Log Analytics workspaces** on Azure services
@@ -119,6 +117,8 @@ See logs in the Log Analytics Workspace.
 - Log Format: `json`
 - Enabled
 5) Click on `Save`
+![Alt text](/images/7-Konnect-Audit-log.png "Konnect Audit Logs")
+
 6) Apply some load on Konnect: create a Gateway Service, apply a Plugin, create a Route, etc.
 
 See Konnect Audit Logs in Azure log analytics:
