@@ -44,8 +44,8 @@ http://localhost:7071/api/konnect_audit_log_processing
 
 Use this command to test the Azure function app:
 ```shell
-curl -X POST http://localhost:7071/api/konnect_audit_log_processing  
--H 'Content-Type: application/json' 
+curl -X POST http://localhost:7071/api/konnect_audit_log_processing \
+-H 'Content-Type: application/json' \
 -d '{"event_product":"Konnect","event_class_id":"auditlogs"}'
 ```
 The expected response is:
