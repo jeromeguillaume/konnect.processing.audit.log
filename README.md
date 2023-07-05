@@ -68,7 +68,7 @@ kong_CP_CL
 Log sent by curl:
 ![Alt text](/images/2-Azure-Log-Analytics-run-query.png "Query on kong_CP_CL")
 
-## Create and Deploy the Azure Function App
+## Create and Deploy the public Azure Function App
 See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp#sign-in-to-azure) and follow this guidance:
 
 ### Create the Function App in Azure
@@ -125,3 +125,10 @@ See Konnect Audit Logs in Azure log analytics:
 ![Alt text](/images/4-Azure-Analytics-Konnect.png "Konnect Audit Logs")
 
 ![Alt text](/images/5-Azure-Analytics-Konnect-detail.png "Konnect Audit Logs - Detail")
+
+## Troublsehoot Azure Function App
+1) Open the `konnect-audit-log-processing` Function App
+2) Click on `Log Stream` menu on the left
+3) See the content log
+
+![Alt text](/images/6-Azure-Log-Stream.png "Log Stream")
