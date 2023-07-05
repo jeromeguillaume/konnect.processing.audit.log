@@ -55,8 +55,7 @@ The expected response is:
 
 **Azure can take a long time creating the 1st log in the Analytics Workspace.** It took 10 minutes on my side. After the 1st creation log, other logs appear almost in real time.
 
-# See logs in the Log Analytics Workspace
-See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp)
+## See logs in the Log Analytics Workspace
 1) Open the `kong-log-analytics-ws` Azure Analytics Workspace
 2) Click on `Logs` menu on the left
 3) Close the popup `Queries` window
@@ -70,7 +69,7 @@ Log sent by curl:
 ![Alt text](/images/2-Azure-Log-Analytics-run-query.png "Query on kong_CP_CL")
 
 ### Create the Function App in Azure
-Take these properties:
+See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp) and take these properties:
 - Select subscription (You won't see this prompt when you have -only one subscription visible under Resources)
 - Globally unique name for the function app: ```konnect-audit-log-processing```
 - Select a runtime stack: ```.NET 7 Isolated```
