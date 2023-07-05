@@ -13,7 +13,7 @@ The Azure function is in charge of:
 
 
 ## Create the Azure Function App
-Create the Azure Function App by following this [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp) and by applying following properties
+Create the Azure Function App by following this [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp) and by applying following properties:
 
 ### Create a local project
 Take these properties:
@@ -55,7 +55,8 @@ The expected response is:
 
 **Azure can take a long time creating the 1st log in the Analytics Workspace.** It took 10 minutes on my side. After the 1st creation log, other logs appear almost in real time.
 
-## See logs in the Log Analytics Workspace
+# See logs in the Log Analytics Workspace
+See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp)
 1) Open the `kong-log-analytics-ws` Azure Analytics Workspace
 2) Click on `Logs` menu on the left
 3) Close the popup `Queries` window
@@ -65,8 +66,8 @@ kong_CP_CL
 | order by TimeGenerated
 ```
 5) Click on `Run`. 
-Example of logs sent by Kong:
-![Alt text](/images/2-Azure-Log-Analytics-run-query.png "Query on kong_DP_CL")
+Log sent by curl:
+![Alt text](/images/2-Azure-Log-Analytics-run-query.png "Query on kong_CP_CL")
 
 ### Create the Function App in Azure
 Take these properties:
