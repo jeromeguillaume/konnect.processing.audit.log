@@ -30,10 +30,9 @@ Copy from the GitHub repository the following files in the local project:
 - `azureKonnect.cs`
 
 Note: 
-- **if you changed the Namespace** adapt the ```kong.konnect``` to your value
-- **If you changed the Function name** adapt the class name and file name to your values
-
-Modify the file `azureKonnect.cs` with your Log Analytics properties taken on previous step:
+1) **if you changed the Namespace** adapt the ```kong.konnect``` to your value
+2) **If you changed the Function name** adapt the class name and file name to your values
+3) Modify the file `azureKonnect.cs` with your Log Analytics properties taken on previous step:
 ```C#
 static string customerId = "<Workspace ID>"
 static string sharedKey = "<Primary key>"
