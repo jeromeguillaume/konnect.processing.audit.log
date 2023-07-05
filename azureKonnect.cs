@@ -41,10 +41,10 @@ namespace kong.konnect
 			// Decompress the traffic if needed by checking Content-Encoding header
 			//----------------------------------------------------------------------
 			try
-            {
-                valueContentEnconding = req.Headers.GetValues("Content-Encoding").First();
-            }
-            catch {}
+			{
+				valueContentEnconding = req.Headers.GetValues("Content-Encoding").First();
+			}
+			catch {}
 			_logger.LogInformation("Konnect Audit Logs | Content-Encoding: " + valueContentEnconding);
 
 			if (valueContentEnconding == "deflate")
@@ -83,7 +83,7 @@ namespace kong.konnect
 			// Sign and Send the logs (received from Konnect CP) to the Azure Log 
 			return sendKonnectLogToAzureAnalytics( requestBody);
 		}
-		
+
 		//----------------------------------------------------------------------------
 		// Sign and Send the logs (received from Konnect CP) to the Azure Log 
 		// Analytics Workspace.
