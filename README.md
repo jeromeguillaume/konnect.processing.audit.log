@@ -1,6 +1,6 @@
-# Azure Function: collect Kong Control Plane Audit logs and push them to Azure Log Analytics
-The Azure function is in charge of:
-1) Collecting logs sent by Kong Control Plane [Audit logs](https://docs.konghq.com/konnect/org-management/audit-logging/)
+# Azure Function: collect Konnect Control Plane Audit logs and push them to Azure Log Analytics
+This Azure function is in charge of:
+1) Collecting logs sent by Konnect Control Plane [Audit logs](https://docs.konghq.com/konnect/org-management/audit-logging/)
 2) Pushing log to Azure Log Analytics with the [Azure HTTP Data Collector REST API](https://learn.microsoft.com/en-us/rest/api/loganalytics/create-request)
 
 ## Create the Azure Log Analytics Workspace
