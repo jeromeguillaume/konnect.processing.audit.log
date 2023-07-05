@@ -29,7 +29,7 @@ Copy from the GitHub repository the following files in the local project:
 - `konnect-audit-log-processing.cs`
 - `azureKonnect.cs`
 
-Note: 
+To do: 
 1) **if you changed the Namespace** adapt the ```kong.konnect``` to your value
 2) **If you changed the Function name** adapt the class name and file name to your values
 3) Modify the file `azureKonnect.cs` with your Log Analytics properties taken on previous step:
