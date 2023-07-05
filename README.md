@@ -52,6 +52,22 @@ The expected response is:
 ```shell
 {"message From Azure Log Analytics": "OK"}
 ```
+
+**Azure can take a long time creating the 1st log in the Analytics Workspace.** It took 10 minutes on my side. After the 1st creation log, other logs appear almost in real time.
+
+## See logs in the Log Analytics Workspace
+1) Open the `kong-log-analytics-ws` Azure Analytics Workspace
+2) Click on `Logs` menu on the left
+3) Close the popup `Queries` window
+4) Access to the Query window and type:
+```sql
+kong_CP_CL
+| order by TimeGenerated
+```
+5) Click on `Run`. 
+Example of logs sent by Kong:
+![Alt text](/images/2-Azure-Log-Analytics-run-query.png "Query on kong_DP_CL")
+
 ### Create the Function App in Azure
 Take these properties:
 - Select subscription (You won't see this prompt when you have -only one subscription visible under Resources)
