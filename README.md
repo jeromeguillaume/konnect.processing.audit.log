@@ -111,17 +111,17 @@ See logs in the Log Analytics Workspace.
 
 ## Enable the Konnect Audit Logs
 1) Log in to Konnect Portal, [here](https://cloud.konghq.com/)
-2) Click on **Organizations** menu on the left
-3) Click on **Audit Logs Setup** menu on the left
-4) Configure the Control Plane location **US - North America** or **EU - Europe** with:
+2) Click on `Organizations` menu on the left
+3) Click on `Audit Logs Setup` menu on the left
+4) Configure the Control Plane location `US - North America` or `EU - Europe` with:
 -  Endpoint: https://konnect-audit-log-processing.azurewebsites.net/api/konnect_audit_log_processing?\
 code=<****funtion_key****>
 - Log Format: json
 - Enabled
-5) Click on **Save**
+5) Click on `Save`
 6) Apply some load on Konnect: create Gateway Service, apply Plugin, create route, etc.
 
-Konnect Audit Logs in Azure log analytics:
+See Konnect Audit Logs in Azure log analytics:
 ![Alt text](/images/4-Azure-Analytics-Konnect.png "Konnect Audit Logs")
 
 ![Alt text](/images/5-Azure-Analytics-Konnect-detail.png "Konnect Audit Logs - Detail")
