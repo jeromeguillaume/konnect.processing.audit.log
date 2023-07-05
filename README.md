@@ -117,7 +117,7 @@ See logs in the Log Analytics Workspace.
 - Log Format: `json`
 - Enabled
 5) Click on `Save`
-6) Apply some load on Konnect: create Gateway Service, apply Plugin, create route, etc.
+6) Apply some load on Konnect: create a Gateway Service, apply a Plugin, create a Route, etc.
 
 See Konnect Audit Logs in Azure log analytics:
 ![Alt text](/images/4-Azure-Analytics-Konnect.png "Konnect Audit Logs")
