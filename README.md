@@ -55,7 +55,7 @@ The expected response is:
 
 **Azure can take a long time creating the 1st log in the Analytics Workspace.** It took 10 minutes on my side. After the 1st creation log, other logs appear almost in real time.
 
-## See logs in the Log Analytics Workspace
+### See logs in the Log Analytics Workspace
 1) Open the `kong-log-analytics-ws` Azure Analytics Workspace
 2) Click on `Logs` menu on the left
 3) Close the popup `Queries` window
