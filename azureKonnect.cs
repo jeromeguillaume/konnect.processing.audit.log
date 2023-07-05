@@ -44,47 +44,46 @@ namespace kong.konnect
             {
                 valueContentEnconding = req.Headers.GetValues("Content-Encoding").First();
             }
-            catch {
-            }
-            _logger.LogInformation("Konnect Audit Logs | Content-Encoding: " + valueContentEnconding);
+            catch {}
+			_logger.LogInformation("Konnect Audit Logs | Content-Encoding: " + valueContentEnconding);
 
-            if (valueContentEnconding == "deflate")
-            {
-                using (DeflateStream zippedStream = new DeflateStream(req.Body, CompressionMode.Decompress))
-                {
-                    using (MemoryStream reader = new MemoryStream())
-                    {
-                        zippedStream.CopyTo(reader);
-                        byte[] result = reader.ToArray();
-                        requestBody = Encoding.Default.GetString(result);
-                    }
-                }
-            }
-            else if (valueContentEnconding == "gzip")
-            {
-                using (GZipStream zippedStream = new GZipStream(req.Body, CompressionMode.Decompress))
-                {
-                    using (MemoryStream reader = new MemoryStream())
-                    {
-                        zippedStream.CopyTo(reader);
-                        byte[] result = reader.ToArray();
-                        requestBody = Encoding.Default.GetString(result);
-                    }
-                }
-            }
-            else
-            {   
-                req.Body.Position = 0;
-                requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            }
-            requestBody = "[" + requestBody + "]";
+			if (valueContentEnconding == "deflate")
+			{
+				using (DeflateStream zippedStream = new DeflateStream(req.Body, CompressionMode.Decompress))
+				{
+					using (MemoryStream reader = new MemoryStream())
+					{
+						zippedStream.CopyTo(reader);
+						byte[] result = reader.ToArray();
+						requestBody = Encoding.Default.GetString(result);
+					}
+				}
+			}
+			else if (valueContentEnconding == "gzip")
+			{
+				using (GZipStream zippedStream = new GZipStream(req.Body, CompressionMode.Decompress))
+				{
+					using (MemoryStream reader = new MemoryStream())
+					{
+						zippedStream.CopyTo(reader);
+						byte[] result = reader.ToArray();
+						requestBody = Encoding.Default.GetString(result);
+					}
+				}
+			}
+			else
+			{   
+				req.Body.Position = 0;
+				requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+			}
+			requestBody = "[" + requestBody + "]";
 			requestBody = requestBody.Replace ("}\n{", "},\n{");
 			_logger.LogInformation("Konnect Audit Logs | data: " + requestBody);
-			
+
 			// Sign and Send the logs (received from Konnect CP) to the Azure Log 
 			return sendKonnectLogToAzureAnalytics( requestBody);
-
 		}
+		
 		//----------------------------------------------------------------------------
 		// Sign and Send the logs (received from Konnect CP) to the Azure Log 
 		// Analytics Workspace.
