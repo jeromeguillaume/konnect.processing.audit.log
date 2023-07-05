@@ -12,7 +12,7 @@ The Azure function is in charge of:
 ![Alt text](/images/1-Azure-Log-Analytics-Workspace.png "Log Analytics Workspace")
 
 
-## Create the Azure Function App
+## Create locally the Azure Function App
 Create the Azure Function App by following this [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp) and by applying following properties:
 
 ### Create a local project
@@ -38,7 +38,7 @@ Modify the file `azureKonnect.cs` with your Log Analytics properties taken on pr
 static string customerId = "<Workspace ID>"
 static string sharedKey = "<Primary key>"
 ```
-### Test locally the code of the local project
+### Test the local Azure Function App
 In Visual Studio Code, click  Run & Debug and Start Debugging (F5). In the terminal console you see an URL which looks like:
 http://localhost:7071/api/konnect_audit_log_processing
 
@@ -68,8 +68,10 @@ kong_CP_CL
 Log sent by curl:
 ![Alt text](/images/2-Azure-Log-Analytics-run-query.png "Query on kong_CP_CL")
 
-### Create the Function App in Azure
+## Create and Deploy the Azure Function App
 See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp) and take these properties:
+
+### Create the Function App in Azure
 - Select subscription (You won't see this prompt when you have -only one subscription visible under Resources)
 - Globally unique name for the function app: ```konnect-audit-log-processing```
 - Select a runtime stack: ```.NET 7 Isolated```
@@ -78,9 +80,24 @@ See [tutorial](https://learn.microsoft.com/en-us/azure/azure-functions/create-fi
 ### Deploy the project to Azure
 In Visual Studio Code, choose the Azure icon in the Activity bar, then in the Workspace area, select your project folder and select the Deploy... button
 
-## Test the Azure Function App
+### Test the public Azure Function App
 The public URL of the Azure Function has this syntax:
-```https://<function_app_name>.azurewebsites.net/api/<function_name>?code=<function_key>```
-In cour case 
-curl -v "https://konnect-audit-log-processing2.azurewebsites.net/
-api/function_name_konnect?code=tHbmLGNUrI3HjWkkGSRYPXGdnh5fyviDMVviD2KY12UAAzFumCp2-A=="
+`https://<function_app_name>.azurewebsites.net/api/<function_name>?code=<function_key>`
+
+The function key is retrieved on Azure Portal
+1) Open the `konnect-audit-log-processing` Function App
+2) Click on `Functions` menu on the left
+3) Open the `konnect_audit_log_processing` function
+4) Click on `Function Keys` menu on the left
+5) Copy/paste the `Function Key` value
+
+Replace the `<****funtion_key****>` value and use this command to test the Azure function app:
+```shell
+curl -X POST "https://konnect-audit-log-processing.azurewebsites.net/api/function_name_konnect?code=<****funtion_key****> \
+-H 'Content-Type: application/json' \
+-d '{"event_product":"Konnect","event_class_id":"auditlogs"}'
+```
+The expected response is:
+```shell
+{"message From Azure Log Analytics": "OK"}
+```
