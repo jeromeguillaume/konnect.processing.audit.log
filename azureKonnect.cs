@@ -17,10 +17,12 @@ namespace kong.konnect
 		private readonly ILogger _logger;
 
 		// Update customerId to your Log Analytics workspace ID
-		static string customerId = "<****CHANGE_ME****>";
+		//static string customerId = "<****CHANGE_ME****>";
+		static string customerId = "7c59c6c9-7817-4e37-9cbd-191da9521769";
 
 		// For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
-		static string sharedKey = "<****CHANGE_ME****>";
+		//static string sharedKey = "<****CHANGE_ME****>";
+		static string sharedKey = "i3FT0oybRYBwCkkfaWykV3Xj5ZiTSBzfJQatHInzF0iApxJ98zH2+r6FHldO6/rMqvigOBDNKDIbIMm0UToSAA==";
 
 		// LogName is name of the event type that is being submitted to Azure Monitor
 		static string LogName = "kong_CP_CL";
@@ -76,12 +78,50 @@ namespace kong.konnect
 				req.Body.Position = 0;
 				requestBody = await new StreamReader(req.Body).ReadToEndAsync();
 			}
+			
+			_logger.LogInformation("Konnect Audit Logs | Original | data: " + requestBody);
+
+			// Re-format the String sent by Konnect for adding a comma ',' between each entry
 			requestBody = "[" + requestBody + "]";
 			requestBody = requestBody.Replace ("}\n{", "},\n{");
-			_logger.LogInformation("Konnect Audit Logs | data: " + requestBody);
+			
+			// Re-format the String sent by Konnect for changing the trace_id from a Double to a String
+			// Azure doesn't ingest correctly the Double there is a limit to 10000000000000000 and 
+			// Konnect sends for example => "trace_id":6187117426119443960
+			// So we re-format it to => "trace_id":"6187117426119443960"	
+			int start = 0;
+			int next = 0;
+			String requestBody2 = "";
+			String traceId = "\"trace_id\":";
+			while (next != -1){
+				next = requestBody.IndexOf(traceId, start);
+				if (next != -1){
+					// Copy the text "trace_id":
+					requestBody2 += requestBody.Substring(start, next - start + traceId.Length);
+					// Find the end of the value of trace_id
+					var endTraceId = requestBody.IndexOf(",", next + 1);
+					if (endTraceId == -1) {
+						endTraceId = requestBody.IndexOf("}", next + 1);
+					}
+					// Copy the value of trace_id (example: 6187117426119443960)
+					requestBody2 += "\"" + requestBody.Substring(next + traceId.Length, endTraceId - next - traceId.Length) + "\"";
+					start = next + traceId.Length + endTraceId - next - traceId.Length;
+				}
+				// There is no 'trace_id' anymore and copy the rest of the string
+				else{
+					var mylength = requestBody.Length;
+					mylength = requestBody.Length - start;
+					requestBody2 += requestBody.Substring(start, requestBody.Length - start);
+				}
+			}
+			
+			_logger.LogInformation("Konnect Audit Logs | Re-formated | data: " + requestBody2);
 
-			// Sign and Send the logs (received from Konnect CP) to the Azure Log 
-			return sendKonnectLogToAzureAnalytics( requestBody);
+			//-----------------------------------------------------------
+			// Sign the request (with HMAC) AND
+			// Send the logs (received from Konnect CP) to the Azure Log 
+			//-----------------------------------------------------------
+			return sendKonnectLogToAzureAnalytics( requestBody2);
 		}
 
 		//----------------------------------------------------------------------------
@@ -145,6 +185,7 @@ namespace kong.konnect
 				System.Net.Http.HttpContent httpContent = new StringContent(json, Encoding.UTF8);
 				httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 				_logger.LogInformation ("Azure Analytics Workspace | Request | URL: " + url);
+				_logger.LogInformation ("Azure Analytics Workspace | Request | Content: " + httpContent.ReadAsStringAsync().Result);
 				Task<System.Net.Http.HttpResponseMessage> response = client.PostAsync(new Uri(url), httpContent);
 				
 				System.Net.Http.HttpContent responseContent = response.Result.Content;
