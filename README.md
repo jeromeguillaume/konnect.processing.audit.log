@@ -102,10 +102,10 @@ The function key is retrieved on Azure Portal:
 Function Key:
 ![Alt text](/images/3-Azure_Function_Key.png "Function Key")
 
-Replace the `<****funtion_key****>` value and use this command to test the Azure function app:
+Replace the `<****function_key****>` value and use this command to test the Azure function app:
 ```shell
 curl -X POST "https://konnect-audit-log-processing.azurewebsites.net/api/konnect_audit_log_processing?\
-code=<****funtion_key****>" \
+code=<****function_key****>" \
 -H 'Content-Type: application/json' \
 -d '{"event_product":"Konnect","event_class_id":"auditlogs"}'
 ```
