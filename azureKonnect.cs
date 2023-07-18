@@ -17,13 +17,11 @@ namespace kong.konnect
 		private readonly ILogger _logger;
 
 		// Update customerId to your Log Analytics workspace ID
-		//static string customerId = "<****CHANGE_ME****>";
-		static string customerId = "7c59c6c9-7817-4e37-9cbd-191da9521769";
-
+		static string customerId = "<****CHANGE_ME****>";
+		
 		// For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
-		//static string sharedKey = "<****CHANGE_ME****>";
-		static string sharedKey = "i3FT0oybRYBwCkkfaWykV3Xj5ZiTSBzfJQatHInzF0iApxJ98zH2+r6FHldO6/rMqvigOBDNKDIbIMm0UToSAA==";
-
+		static string sharedKey = "<****CHANGE_ME****>";
+		
 		// LogName is name of the event type that is being submitted to Azure Monitor
 		static string LogName = "kong_CP_CL";
 
